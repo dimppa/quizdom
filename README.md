@@ -19,8 +19,8 @@ Generate multiple choice quizes from educational youtube videos. Improve knowled
 - os
 
 ## Ongoing development
-- Access to YouTube watch history
-* https://stackoverflow.com/questions/63213016/how-can-i-get-my-watch-history-with-youtube-data-api-v3
-* https://www.reddit.com/r/youtube/comments/ijq4pq/is_there_a_way_to_get_watch_history_via_youtube/
+* Access to YouTube watch history
+- https://stackoverflow.com/questions/63213016/how-can-i-get-my-watch-history-with-youtube-data-api-v3
+- https://www.reddit.com/r/youtube/comments/ijq4pq/is_there_a_way_to_get_watch_history_via_youtube/
 - Improving prompt to get better questions
 - Building an interactive quiz with grading
