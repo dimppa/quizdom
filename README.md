@@ -10,10 +10,10 @@ Generate multiple choice quizes from educational youtube videos. Improve knowled
 6. quiz.py takes the transcript from transcript_current and sends a prompt to ollama to generate a quiz with 5 multiple choice questions + answer key -> deposits quiz in quizzes and moves transcript from transcript_current to transcript_archive
 7. ready quiz in quizzes
 
-## Libraries (incomplete list)
-yt-dlp
-moviepy
-whisper
-ollama + deepseek-r1:8b
-shutil
-os
+## Libraries
+- yt-dlp
+- moviepy
+- whisper
+- ollama + deepseek-r1:8b
+- shutil
+- os
