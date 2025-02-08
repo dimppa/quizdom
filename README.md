@@ -19,10 +19,17 @@ Generate multiple choice quizes from educational youtube videos. Improve knowled
 - os
 
 ## Ongoing development
-- Access to YouTube watch history
+### Access to YouTube watch history
+Tried setting this up with my personal google account, couldn't figure it out. You can manually export your YouTube watch history by requesting it from Google Takeout but so far I haven't figured out/found any API or tool that would automate this. Came across this tool but didn't have time to verify if it's legit: https://gandalf.network/
+
+Resources:
   - https://stackoverflow.com/questions/63213016/how-can-i-get-my-watch-history-with-youtube-data-api-v3
   - https://www.reddit.com/r/youtube/comments/ijq4pq/is_there_a_way_to_get_watch_history_via_youtube/
   - https://blog.viktomas.com/posts/youtube-usage/
   - https://www.reddit.com/r/DataHoarder/comments/199411o/google_takeout_is_getting_an_official_api/
-- Improving prompt to get better questions
-- Building an interactive quiz with grading
+
+### Improving prompt to get better questions
+Played around with the prompt and went from deepseek-r1:8b to deepseek-r1:14b, marginal improvement. Ditched this setup, implemented gpt-4o via api and the result is dramatically better. Quizes are generated faster and the questions are significantly better. For obvious reasons keeping this public repository with the local llm setup.
+
+### Building an interactive quiz with grading
+Looking into this.
