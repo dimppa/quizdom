@@ -22,6 +22,11 @@ Generate multiple choice quizes from educational youtube videos. Improve knowled
 - os
 - ollama + deepseek-r1:14b (if generating quiz locally)
 
+## Example YouTube videos
+- https://www.youtube.com/watch?v=uqsBx58GxYY
+- https://www.youtube.com/watch?v=hvk_XylEmLo&t
+- https://www.youtube.com/watch?v=Zw1ucZEqQ78&t=3s
+
 ## Ongoing development
 ### Access to YouTube watch history
 Tried setting this up with my personal google account, couldn't figure it out. You can manually export your YouTube watch history by requesting it from Google Takeout but so far I haven't figured out/found any API or tool that would automate this. Came across this tool but didn't have time to verify if it's legit: https://gandalf.network/
