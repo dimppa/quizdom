@@ -20,7 +20,7 @@ Generate multiple choice quizes from educational youtube videos. Improve knowled
 - random
 - shutil
 - os
-- - ollama + deepseek-r1:14b (if generating quiz locally)
+- ollama + deepseek-r1:14b (if generating quiz locally)
 
 ## Ongoing development
 ### Access to YouTube watch history
