@@ -1,7 +1,7 @@
 import os
 import argparse
-from datetime import datetime
 import random
+from datetime import datetime
 
 def load_quiz(quiz_path):
     """Load and parse the quiz file into a structured format."""
@@ -46,9 +46,6 @@ def load_quiz(quiz_path):
 
     if current_question:
         questions.append(current_question)
-    
-    # Randomize the order of questions
-    random.shuffle(questions)
         
     return questions
 
@@ -81,8 +78,7 @@ def grade_quiz(questions, user_answers):
     
     for i, q in enumerate(questions, 1):
         user_answer = user_answers.get(i)
-        # Extract just the letter from the correct answer, removing any trailing characters
-        correct_answer = q['correct_answer'].strip()[0] if q['correct_answer'] else None
+        correct_answer = q['correct_answer']
         is_correct = user_answer == correct_answer
         
         if is_correct:
@@ -117,10 +113,8 @@ def get_latest_quiz(quiz_dir):
     if not quiz_files:
         return None
     
-    # Get the full path and creation time for each quiz file
     quiz_files_with_time = [(f, os.path.getctime(os.path.join(quiz_dir, f))) 
                            for f in quiz_files]
-    # Sort by creation time (most recent first)
     quiz_files_with_time.sort(key=lambda x: x[1], reverse=True)
     
     return quiz_files_with_time[0][0]
