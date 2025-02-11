@@ -22,6 +22,8 @@ Generate multiple choice quizes from educational youtube videos. Improve knowled
 - os
 - ollama + deepseek-r1:14b (if generating quiz locally)
 
+run pip install -r requirements.txt
+
 ## Example YouTube videos
 - https://www.youtube.com/watch?v=uqsBx58GxYY
 - https://www.youtube.com/watch?v=hvk_XylEmLo&t
