@@ -7,16 +7,20 @@ Generate multiple choice quizes from educational youtube videos. Improve knowled
 3. main.py verifies download and launches transcript.py
 4. transcript.py takes the video from video_current and extracts the audio using moviepy -> transcribes the video using whisper -> deposits transcript in transcript_current and moves video+audio files from video_current to video_archive
 5. transcript.py launches quiz.py
-6. quiz.py takes the transcript from transcript_current and sends a prompt to ollama to generate a quiz with 5 multiple choice questions + answer key -> deposits quiz in quizzes and moves transcript from transcript_current to transcript_archive
-7. ready quiz in quizzes
+6. quizgen.py takes the transcript from transcript_current and sends a prompt to gpt-4o via openai api to generate a quiz with 5 multiple choice questions + answer key -> deposits quiz in quizzes and moves transcript from transcript_current to transcript_archive. Or use quizgen_ollama.py to do the same locally.
+8. quiz.py
 
 ## Libraries
 - yt-dlp
 - moviepy
 - whisper
-- ollama + deepseek-r1:8b
+- OpenAi
+- argprase
+- datetime
+- random
 - shutil
 - os
+- - ollama + deepseek-r1:14b (if generating quiz locally)
 
 ## Ongoing development
 ### Access to YouTube watch history
