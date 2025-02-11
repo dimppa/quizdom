@@ -30,7 +30,7 @@ def generate_quiz(transcript_path, quiz_path):
     Answer: [Correct Option]
     """
 
-    response = ollama.chat(model="deepseek-r1:8b", messages=[{"role": "user", "content": prompt}])
+    response = ollama.chat(model="deepseek-r1:14b", messages=[{"role": "user", "content": prompt}])
     quiz_text = response["message"]["content"]
 
     with open(quiz_path, "w", encoding="utf-8") as f:
