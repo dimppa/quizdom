@@ -6,7 +6,7 @@ output_folder= "video_current"
 os.makedirs(output_folder, exist_ok=True)
 
 
-url = "https://www.youtube.com/watch?v=uqsBx58GxYY"
+url = "https://www.youtube.com/watch?v=hvk_XylEmLo&t=3s"
 
 # Set download options
 ydl_opts = {
