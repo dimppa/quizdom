@@ -33,7 +33,10 @@ Resources:
   - https://www.reddit.com/r/DataHoarder/comments/199411o/google_takeout_is_getting_an_official_api/
 
 ### Improving prompt to get better questions
-Played around with the prompt and went from deepseek-r1:8b to deepseek-r1:14b, marginal improvement. Ditched this setup, implemented gpt-4o via api and the result is dramatically better. Quizes are generated faster and the questions are significantly better. For obvious reasons keeping this public repository with the local llm setup.
+Played around with the prompt and went from deepseek-r1:8b to deepseek-r1:14b, marginal improvement. Ditched this setup, implemented gpt-4o via api and the result is dramatically better. Quizes are generated faster and the questions are significantly better. Adjusted the prompt somre more 
 
 ### Building an interactive quiz with grading
-Looking into this.
+Included quiz.py which now opens the quiz in the terminal, allowing you to answer the questions and get a grade in the end. Also allows you to access previous quizes by running quiz.py directly, which will prompt you to select one of the previous quizes or do a random one. The order of the questions and answers is randomised each time. 
+
+### Frontend
+The next step would most likely be to slap this into a web app. Looking into it.
