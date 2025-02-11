@@ -12,7 +12,7 @@ def generate_quiz(transcript_path, quiz_path):
         transcript_text = f.read()
 
     client = OpenAI(
-        api_key="paste api key here"
+        api_key="insert api key here"
     )
 
     try:
@@ -58,22 +58,25 @@ def process_transcripts():
     quiz_dir = "quizzes"
     latest_quiz = None
 
+    print("Looking for transcripts...")  # Debug print
     for file in os.listdir(transcript_dir):
         if file.endswith("_transcript.txt"):
             transcript_path = os.path.join(transcript_dir, file)
             quiz_path = os.path.join(quiz_dir, file.replace("_transcript.txt", "_quiz.txt"))
 
+            print(f"Found transcript: {file}")  # Debug print
             print(f"Generating quiz for {file}...")
             generate_quiz(transcript_path, quiz_path)
             latest_quiz = quiz_path
 
             shutil.move(transcript_path, os.path.join(archive_dir, file))
-            print(f"Quiz for {file} has been generated and saved.")
+            print(f"Quiz generated and saved to: {quiz_path}")  # Debug print
 
     if latest_quiz:
-        print("\nLaunching quiz interface with the latest quiz...")
+        print(f"\nLatest quiz path: {latest_quiz}")  # Debug print
+        print("\nLaunching quiz.py with --latest flag...")
         import subprocess
-        subprocess.run(['python', 'quiz.py', '--latest'])
+        subprocess.run(['python', 'quiz.py', '--latest'])  # Removed capture_output=True
 
 if __name__ == "__main__":
     ensure_directories()
