@@ -2,32 +2,66 @@ import yt_dlp
 import os
 import subprocess
 
-output_folder= "video_current"
+# Configuration
+MAX_VIDEO_DURATION_MINUTES = 90
+
+output_folder = "video_current"
 os.makedirs(output_folder, exist_ok=True)
 
+url = "https://www.youtube.com/watch?v=zjkBMFhNj_g"
 
-url = "https://www.youtube.com/watch?v=hvk_XylEmLo&t=3s"
+def get_video_info(url):
+    """Get video information without downloading."""
+    ydl_opts = {
+        "quiet": True,
+        "no_warnings": True,
+        "extract_flat": True,
+    }
+    
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        try:
+            info = ydl.extract_info(url, download=False)
+            duration_minutes = info.get('duration', 0) / 60  # Convert seconds to minutes
+            title = info.get('title', 'Unknown Title')
+            return duration_minutes, title
+        except Exception as e:
+            print(f"Error getting video info: {str(e)}")
+            return None, None
 
-# Set download options
-ydl_opts = {
-    "format": "bv*[height<=720]+ba/b[height<=720]",
-    "merge_output_format": "mp4",
-    "outtmpl": os.path.join(output_folder, "%(title)s.%(ext)s"),
-}
+def main():
+    # Check video duration first
+    duration_minutes, title = get_video_info(url)
+    
+    if duration_minutes is None:
+        print("Could not get video information. Please check the URL.")
+        return
+    
+    if duration_minutes > MAX_VIDEO_DURATION_MINUTES:
+        print(f"\nVideo '{title}' is too long!")
+        print(f"Duration: {duration_minutes:.1f} minutes")
+        print(f"Maximum allowed: {MAX_VIDEO_DURATION_MINUTES} minutes")
+        return
 
-with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-    ydl.download([url])
+    print(f"\nVideo '{title}' duration: {duration_minutes:.1f} minutes")
+    print("Duration check passed, proceeding with download...")
 
-def launch_script(script_name):
-    """Launch another Python script after a successful download."""
-    print(f"Launching {script_name}...")
-    subprocess.run(["python", script_name])  # Runs the script
+    # Set download options
+    ydl_opts = {
+        "format": "bv*[height<=720]+ba/b[height<=720]",
+        "merge_output_format": "mp4",
+        "outtmpl": os.path.join(output_folder, "%(title)s.%(ext)s"),
+    }
 
-with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-    result = ydl.download([url])
+    # Download the video
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        result = ydl.download([url])
 
-# Step 3: If the download was successful, launch another script
-if result == 0:  # yt-dlp returns 0 if successful
-    launch_script("transcription.py")
-else:
-    print("Download failed. Transcription script will not be launched.")
+    # If download was successful, launch transcription
+    if result == 0:
+        print("\nLaunching transcription...")
+        subprocess.run(["python", "transcription.py"])
+    else:
+        print("Download failed. Transcription script will not be launched.")
+
+if __name__ == "__main__":
+    main()
